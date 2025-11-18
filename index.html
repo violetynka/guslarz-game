@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guślarz: Między Światami - Coming Soon</title>
+    <meta name="description" content="Zostań znachorem z epoki Mickiewicza. Lecz ziołami. Przeprowadź rytuał dziadów. Gra RPG oparta na autentycznej polskiej etnografii.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Guślarz: Między Światami">
+    <meta property="og:description" content="Przeżyj Dziady od środka. To nie jest lektura - to doświadczenie.">
+    <meta property="og:image" content="GUSLARZLEPSZY.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --color-dark: #0a0908;
+            --color-brown-dark: #1a1613;
+            --color-brown: #2e241b;
+            --color-light-brown: #8b7355;
+            --color-bone: #c4b5a8;
+            --color-cream: #f5f2ed;
+            --color-accent: #7a5d47;
+        }
+        
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background-color: var(--color-dark);
+            color: var(--color-bone);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background-image: url('GUSLARZLEPSZY.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            will-change: transform;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                rgba(10,9,8,0.2) 0%, 
+                rgba(10,9,8,0.3) 50%, 
+                rgba(10,9,8,0.7) 100%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+            position: relative;
+        }
+        
+        /* Title Container */
+        .title-container {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-family: 'IM Fell English', serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 400;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            line-height: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-family: 'IM Fell English', serif;
+            font-size: clamp(1rem, 2.2vw, 1.4rem);
+            color: rgba(255,255,255,0.9);
+            margin-top: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+        
+        .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+            font-style: italic;
+            letter-spacing: 0.02em;
+        }
+        
+        .cta-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            padding: 0.9rem 2.2rem;
+            font-family: 'IM Fell English SC', serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.6);
+            color: #ffffff;
+            background: transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #ffffff;
+        }
+        
+        .cta-button.primary {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.8);
+        }
+        
+        .cta-button.primary:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .release-date {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-family: 'IM Fell English SC', serif;
+        }
+        
+        /* Content Section */
+        .content {
+            background: var(--color-dark);
+            padding: 6rem 1rem;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section {
+            margin-bottom: 5rem;
+            position: relative;
+        }
+        
+        h2 {
+            font-family: 'IM Fell English', serif;
+            font-size: 2.5rem;
+            color: var(--color-cream);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        .story-preview {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--color-bone);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .story-preview strong {
+            color: var(--color-cream);
+            font-weight: 700;
+        }
+        
+        .story-full {
+            display: none;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--color-bone);
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .story-full.show {
+            display: block;
+        }
+        
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--color-light-brown);
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 400;
+            padding: 0.5rem 0;
+            margin: 0 auto 2rem;
+            display: block;
+            transition: color 0.3s ease;
+            font-family: 'IM Fell English SC', serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        
+        .read-more-btn:hover {
+            color: var(--color-cream);
+        }
+        
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            padding: 0 2rem;
+        }
+        
+        .feature {
+            padding: 2rem;
+            background: transparent;
+            border: 1px solid rgba(196, 181, 168, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+        
+        .feature:hover {
+            border-color: rgba(196, 181, 168, 0.4);
+            background: rgba(46, 36, 27, 0.2);
+        }
+        
+        .feature h3 {
+            font-family: 'IM Fell English SC', serif;
+            color: var(--color-cream);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        
+        .feature p {
+            color: var(--color-bone);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: transparent;
+            border: 1px solid rgba(196, 181, 168, 0.3);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+            position: relative;
+        }
+        
+        .newsletter h3 {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.9rem;
+            color: var(--color-cream);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        
+        .newsletter p {
+            color: var(--color-bone);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-style: italic;
+        }
+        
+        .email-form {
+            display: flex;
+            max-width: 450px;
+            margin: 0 auto;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .email-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.7rem 1rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--color-accent);
+            color: var(--color-cream);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .email-input::placeholder {
+            color: rgba(196, 181, 168, 0.5);
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: var(--color-light-brown);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-dark);
+            padding: 2rem;
+            text-align: center;
+            color: var(--color-accent);
+            font-size: 0.85rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 1000px;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .cta-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="title-container">
+                <h1>GUŚLARZ</h1>
+                <p class="subtitle">MIĘDZY ŚWIATAMI</p>
+            </div>
+            <p class="tagline">Zostań znachorem z epoki Mickiewicza.<br>
+            Lecz ziołami. Przeprowadź rytuał dziadów.</p>
+            <div class="cta-container">
+                <a href="#" class="cta-button primary">WISHLIST STEAM</a>
+                <a href="#newsletter" class="cta-button">DOŁĄCZ DO BETA</a>
+            </div>
+            <p class="release-date">EARLY ACCESS 2025</p>
+        </div>
+    </section>
+    
+    <!-- Content Section -->
+    <section class="content">
+        <div class="container">
+            <!-- Main Description -->
+            <div class="section">
+                <h2>Przeżyj Dziady od środka</h2>
+                
+                <div class="story-preview">
+                    <strong>To nie jest lektura - to doświadczenie.</strong> Wciel się w wiejskiego znachora z czasów Mickiewicza. 
+                    To TY przygotowujesz obrzęd dziadów. Ale najpierw musisz przetrwać tydzień jako jedyny uzdrowiciel w wiosce.
+                    Mieszkańcy przychodzą z dziwnymi problemami - koszmary o topielcach, urok rzucony na córkę kowala, duchy przy studni...
+                </div>
+                
+                <button class="read-more-btn" onclick="toggleStory()">Czytaj więcej →</button>
+                
+                <div class="story-full" id="storyFull">
+                    <p>
+                        To nie fantasy - to autentyczne przypadki z XIX-wiecznych zapisków znachorów. 
+                        Odkrywaj prawdziwe metody leczenia. Dziurawiec zbierany w południe leczy "czarną melancholię", 
+                        ale zebrany o złej porze nie zadziała. Każda receptura to prawdziwa wiedza ludowa, którą musisz odkryć eksperymentując.
+                    </p>
+                    <p>
+                        Twoje wybory mają znaczenie. Masz zioła tylko na jedną miksturę - komu pomożesz? 
+                        Bogatemu kowalowi czy biednej wdowie? Każda decyzja ma konsekwencje.
+                    </p>
+                    <p>
+                        <strong>Siódmej nocy nadchodzą dziady.</strong> To kulminacja - obrzęd, który sam przeprowadzisz. 
+                        Duchy, które się pojawią, zależą od tego jak pomogłeś mieszkańcom. 
+                        Każde dziady są inne, każde są konsekwencją twoich decyzji.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Features -->
+            <div class="section">
+                <div class="features">
+                    <div class="feature">
+                        <h3>Diagnozuj przez obserwację</h3>
+                        <p>Żadnych pasków zdrowia. Czytaj choroby po symptomach - bladość, sposób mówienia, treść snów.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Eksperymentuj z ziołami</h3>
+                        <p>Dziesiątki roślin. Każda działa inaczej zależnie od pory zbioru i przygotowania.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Zarządzaj czasem</h3>
+                        <p>Dzień jest krótki, pacjentów wielu. Musisz wybierać komu pomożesz.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Przeprowadź dziady</h3>
+                        <p>Duchy pamiętają twoje wybory. Rytuał zależy od twoich wcześniejszych decyzji.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="newsletter" id="newsletter">
+                <h3>Zapisz się na wczesny dostęp</h3>
+                <p>Bądź pierwszym, który zagra w wersję beta</p>
+                <form class="email-form" action="#" method="post">
+                    <input type="email" class="email-input" placeholder="twoj@email.com" required>
+                    <button type="submit" class="cta-button">ZAPISZ</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Guślarz: Między Światami. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+    
+    <script>
+        // Parallax effect for hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.getElementById('heroBg');
+            const speed = 0.5;
+            heroBg.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+        
+        // Toggle story
+        function toggleStory() {
+            const storyFull = document.getElementById('storyFull');
+            const btn = document.querySelector('.read-more-btn');
+            
+            storyFull.classList.toggle('show');
+            
+            if (storyFull.classList.contains('show')) {
+                btn.textContent = 'Zwiń ←';
+            } else {
+                btn.textContent = 'Czytaj więcej →';
+            }
+        }
+    </script>
+</body>
+</html>
